@@ -395,6 +395,7 @@
 "Assets/Scripts/CarScripts/CameraController.cs"
 "Assets/Scripts/CarScripts/CarController.cs"
 "Assets/Scripts/CarScripts/CarSoundController.cs"
+"Assets/Scripts/CurrencyExchange.cs"
 "Assets/Scripts/Garage/CarComponentsController.cs"
 "Assets/Scripts/Garage/GarageController.cs"
 "Assets/Scripts/IronSource/IronSourceController.cs"
