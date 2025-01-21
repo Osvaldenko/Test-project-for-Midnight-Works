@@ -75,9 +75,12 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\CurrencyExchange.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
+    <Compile Include="Assets\Scripts\UI\SettingsUIController.cs" />
+    <Compile Include="Assets\Scripts\SettingsController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Scripts\CarScripts\CarSoundController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectsAndData\SettingsData.cs" />
     <Compile Include="Assets\Scripts\Garage\GarageController.cs" />
     <Compile Include="Assets\LevelPlay\Samples\UnityLevelPlaySample\Scripts\LevelPlaySample.cs" />
     <Compile Include="Assets\Scripts\CarScripts\CarController.cs" />

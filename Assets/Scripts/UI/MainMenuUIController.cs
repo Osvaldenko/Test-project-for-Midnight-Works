@@ -3,6 +3,7 @@ using UnityEngine;
 public class MainMenuUIController : MonoBehaviour
 {
     [SerializeField] private GameObject mainManuPanel;
+    [SerializeField] private GameObject currencyShopPanel;
     [Header("Garage UI")]
     [SerializeField] private GameObject garagePanel;
     [SerializeField] private GameObject colorChangePanel;
@@ -20,6 +21,14 @@ public class MainMenuUIController : MonoBehaviour
         PhotonLauncher.OnWaitingForPlayers -= OpenWaitingPanel;
     }
 
+    public void CloseCurrencyShopPanel()
+    {
+        currencyShopPanel.SetActive(false);
+    }
+    public void OpenCurrencyShopPanel()
+    {
+        currencyShopPanel.SetActive(true);
+    }
     public void CloseGaragePanel()
     {
         garagePanel.SetActive(false);
