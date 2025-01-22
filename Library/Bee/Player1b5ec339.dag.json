@@ -584,8 +584,8 @@
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll",
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Internal.dll",
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.Internal.dll",
-        "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.dll",
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Device.dll",
+        "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.dll",
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Threading.dll",
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll",
         "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Networking.dll",
@@ -1559,18 +1559,6 @@
       "DebugActionIndex": 92
     },
     {
-      "Annotation": "CopyFiles D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.dll",
-      "DisplayName": "Copying Unity.Services.Core.dll",
-      "ActionType": "CopyFiles",
-      "Inputs": [
-        "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.dll"
-      ],
-      "Outputs": [
-        "D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.dll"
-      ],
-      "DebugActionIndex": 93
-    },
-    {
       "Annotation": "CopyFiles D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.Device.dll",
       "DisplayName": "Copying Unity.Services.Core.Device.dll",
       "ActionType": "CopyFiles",
@@ -1579,6 +1567,18 @@
       ],
       "Outputs": [
         "D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.Device.dll"
+      ],
+      "DebugActionIndex": 93
+    },
+    {
+      "Annotation": "CopyFiles D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.dll",
+      "DisplayName": "Copying Unity.Services.Core.dll",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.dll"
+      ],
+      "Outputs": [
+        "D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.dll"
       ],
       "DebugActionIndex": 94
     },
@@ -2975,18 +2975,6 @@
       "DebugActionIndex": 210
     },
     {
-      "Annotation": "CopyFiles D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.pdb",
-      "DisplayName": "Copying Unity.Services.Core.pdb",
-      "ActionType": "CopyFiles",
-      "Inputs": [
-        "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.pdb"
-      ],
-      "Outputs": [
-        "D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.pdb"
-      ],
-      "DebugActionIndex": 211
-    },
-    {
       "Annotation": "CopyFiles D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.Device.pdb",
       "DisplayName": "Copying Unity.Services.Core.Device.pdb",
       "ActionType": "CopyFiles",
@@ -2995,6 +2983,18 @@
       ],
       "Outputs": [
         "D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.Device.pdb"
+      ],
+      "DebugActionIndex": 211
+    },
+    {
+      "Annotation": "CopyFiles D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.pdb",
+      "DisplayName": "Copying Unity.Services.Core.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "D:/UnityHUB/WorkProjects_all/Test project for Midnight Works/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.pdb"
+      ],
+      "Outputs": [
+        "D:/UnityHUB/Builds/PC/MidnightWorks/Test project for Midnight Works_Data/Managed/Unity.Services.Core.pdb"
       ],
       "DebugActionIndex": 212
     },

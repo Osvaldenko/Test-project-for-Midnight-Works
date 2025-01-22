@@ -4,8 +4,8 @@ using UnityEngine;
 public class SettingsData : ScriptableObject
 {
     [Range(0f, 1f)]
-    [SerializeField] private float musicVolume = 1f;
-    [SerializeField] private GraphicsQuality graphicsQuality;
+    [SerializeField] public float musicVolume = 1f;
+    [SerializeField] public GraphicsQuality graphicsQuality;
 }
 
 public enum GraphicsQuality

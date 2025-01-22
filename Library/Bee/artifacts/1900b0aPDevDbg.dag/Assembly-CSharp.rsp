@@ -345,6 +345,7 @@
 "Assets/Scripts/CarScripts/CameraController.cs"
 "Assets/Scripts/CarScripts/CarController.cs"
 "Assets/Scripts/CarScripts/CarSoundController.cs"
+"Assets/Scripts/CurrencyExchange.cs"
 "Assets/Scripts/Garage/CarComponentsController.cs"
 "Assets/Scripts/Garage/GarageController.cs"
 "Assets/Scripts/IronSource/IronSourceController.cs"
@@ -355,8 +356,11 @@
 "Assets/Scripts/PlayerScoreGenerator.cs"
 "Assets/Scripts/ScriptableObjectsAndData/CarData.cs"
 "Assets/Scripts/ScriptableObjectsAndData/PlayerData.cs"
+"Assets/Scripts/ScriptableObjectsAndData/SettingsData.cs"
+"Assets/Scripts/SettingsController.cs"
 "Assets/Scripts/UI/LevelUIController.cs"
 "Assets/Scripts/UI/MainMenuUIController.cs"
+"Assets/Scripts/UI/SettingsUIController.cs"
 "Assets/Scripts/UI/TimerUIController.cs"
 -langversion:9.0
 

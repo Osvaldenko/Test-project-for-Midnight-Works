@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SettingsController : MonoBehaviour
 {
+    public event Action OnSettingsLoaded;
+
+    [SerializeField] private AudioMixer audioMixer;
     public SettingsData settingsData;
-    public AudioMixer audioMixer;  // Для управления громкостью музыки
 
     private void Start()
     {
@@ -14,15 +17,15 @@ public class SettingsController : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         settingsData.musicVolume = volume;
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20); // Устанавливаем громкость
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
     public void SetGraphicsQuality(int qualityIndex)
     {
-        settingsData.graphicsQuality = qualityIndex;
-        QualitySettings.SetQualityLevel(qualityIndex);
-        PlayerPrefs.SetInt("GraphicsQuality", qualityIndex);
+        settingsData.graphicsQuality = (GraphicsQuality)qualityIndex;
+        QualitySettings.SetQualityLevel((int)qualityIndex);
+        PlayerPrefs.SetInt("GraphicsQuality", (int)qualityIndex);
     }
 
     private void LoadSettings()
@@ -33,12 +36,12 @@ public class SettingsController : MonoBehaviour
             settingsData.musicVolume = volume;
             audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         }
-
         if (PlayerPrefs.HasKey("GraphicsQuality"))
         {
             int quality = PlayerPrefs.GetInt("GraphicsQuality");
-            settingsData.graphicsQuality = quality;
+            settingsData.graphicsQuality = (GraphicsQuality)quality;
             QualitySettings.SetQualityLevel(quality);
         }
+        OnSettingsLoaded?.Invoke();
     }
 }

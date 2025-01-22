@@ -4,6 +4,7 @@ public class MainMenuUIController : MonoBehaviour
 {
     [SerializeField] private GameObject mainManuPanel;
     [SerializeField] private GameObject currencyShopPanel;
+    [SerializeField] private GameObject settingsPanel;
     [Header("Garage UI")]
     [SerializeField] private GameObject garagePanel;
     [SerializeField] private GameObject colorChangePanel;
@@ -21,6 +22,14 @@ public class MainMenuUIController : MonoBehaviour
         PhotonLauncher.OnWaitingForPlayers -= OpenWaitingPanel;
     }
 
+    public void CloseSettingsPanel()
+    {
+        settingsPanel.SetActive(false);
+    }
+    public void OpenSettingsPanel()
+    {
+        settingsPanel.SetActive(true);
+    }
     public void CloseCurrencyShopPanel()
     {
         currencyShopPanel.SetActive(false);
