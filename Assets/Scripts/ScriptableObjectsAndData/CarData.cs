@@ -10,7 +10,7 @@ public class CarData : ScriptableObject
 
     public Material PlayerCarMaterial { get { return playerCarMaterial; } }
     public bool IsEngineUpgraded { get { return isEngineUpgraded; } }
-    public bool iIsSidesUpgraded { get { return isSidesUpgraded; } }
+    public bool IsSidesUpgraded { get { return isSidesUpgraded; } }
     public bool IsBackWingsUpgraded { get { return isBackWingsUpgraded; } }
 
     public void SetCarMaterial(Material material)

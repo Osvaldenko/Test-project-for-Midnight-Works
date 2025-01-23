@@ -13,6 +13,11 @@ public class PlayerData : ScriptableObject
     public void AddCoins(int value)
     {
         playerCoins += value;
+        PlayerPrefs.SetInt("Coins", playerCoins);
         OnCoinsUpdated?.Invoke();
+    }
+    public void SetCoins(int value)
+    {
+        playerCoins = value;
     }
 }

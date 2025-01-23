@@ -16,6 +16,7 @@ public class SettingsController : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
+        if (volume < 0.0001f) volume = 0.0001f;
         settingsData.musicVolume = volume;
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("MusicVolume", volume);

@@ -14,17 +14,17 @@ public class CarComponentsController : MonoBehaviour
         SetCarSettings();
     }
 
-    public void UpgradeBackWings()
+    public void BackWings(bool value)
     {
-        backWingsObject.SetActive(true);
+        backWingsObject.SetActive(value);
     }
-    public void UpgradeSides()
+    public void Sides(bool value)
     {
-        sidesObject.SetActive(true);
+        sidesObject.SetActive(value);
     }
-    public void UpgradeEndine()
+    public void Endine(bool value)
     {
-        enginePartObject.SetActive(true);
+        enginePartObject.SetActive(value);
     }
     public void SetCarMaterial(Material material)
     {
@@ -41,7 +41,7 @@ public class CarComponentsController : MonoBehaviour
         {
             backWingsObject.SetActive(true);
         }
-        if (carData.iIsSidesUpgraded)
+        if (carData.IsSidesUpgraded)
         {
             sidesObject.SetActive(true);
         }

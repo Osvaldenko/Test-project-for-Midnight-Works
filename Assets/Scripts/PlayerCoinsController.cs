@@ -17,6 +17,10 @@ public class PlayerCoinsController : MonoBehaviour
     
     private void Start()
     {
+        if (PlayerPrefs.HasKey("Coins"))
+        {
+            playerData.SetCoins(PlayerPrefs.GetInt("Coins"));
+        }
         UpdateCoinsUI();
     }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94425787a10fe44190a064bec0c1a61, type: 3}
   m_Name: PlayerCarData
   m_EditorClassIdentifier: 
-  playerCarMaterial: {fileID: 2100000, guid: c55cd13c983151f488686d50353a716f, type: 2}
-  isEngineUpgraded: 0
+  playerCarMaterial: {fileID: 2100000, guid: 37608e6988151a248951cdd1a93a59c5, type: 2}
+  isEngineUpgraded: 1
   isSidesUpgraded: 0
   isBackWingsUpgraded: 0
