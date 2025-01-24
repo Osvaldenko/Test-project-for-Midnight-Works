@@ -47,6 +47,7 @@ public class LevelUIController : MonoBehaviour
     }
     private void GameOver()
     {
+        PlayerPrefs.SetInt("DriftPoints", scoreGenerator.PlayerScore);
         playerCoins = scoreGenerator.PlayerScore / 3;
         StartCoroutine(EndGame());
     }

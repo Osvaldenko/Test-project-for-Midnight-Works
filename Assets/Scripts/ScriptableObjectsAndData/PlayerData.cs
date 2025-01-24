@@ -16,6 +16,12 @@ public class PlayerData : ScriptableObject
         PlayerPrefs.SetInt("Coins", playerCoins);
         OnCoinsUpdated?.Invoke();
     }
+    public void RemoveCoins(int value)
+    {
+        playerCoins -= value;
+        PlayerPrefs.SetInt("Coins", playerCoins);
+        OnCoinsUpdated?.Invoke();
+    }
     public void SetCoins(int value)
     {
         playerCoins = value;

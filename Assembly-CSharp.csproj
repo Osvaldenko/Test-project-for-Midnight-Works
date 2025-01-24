@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\UI\LevelUIController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectsAndData\CarPriceData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjectsAndData\PlayerData.cs" />
     <Compile Include="Assets\Scripts\UI\TimerUIController.cs" />
     <Compile Include="Assets\Scripts\Garage\CarComponentsController.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Scripts\CarScripts\CarSoundController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\UI\CarShopUIController.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjectsAndData\SettingsData.cs" />
     <Compile Include="Assets\Scripts\Garage\GarageController.cs" />
     <Compile Include="Assets\LevelPlay\Samples\UnityLevelPlaySample\Scripts\LevelPlaySample.cs" />
