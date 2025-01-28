@@ -25,14 +25,12 @@ public class MainMenuUIController : MonoBehaviour
     private void OnEnable()
     {
         PhotonLauncher.OnWaitingForPlayers += OpenWaitingPanel;
+        GarageController.OnCarDataLoaded += UpdateGarageTuningUI;
     }
     private void OnDisable()
     {
         PhotonLauncher.OnWaitingForPlayers -= OpenWaitingPanel;
-    }
-    private void Awake()
-    {
-        LoadCarData();
+        GarageController.OnCarDataLoaded -= UpdateGarageTuningUI;
     }
 
     public void CloseSettingsPanel()
@@ -97,46 +95,38 @@ public class MainMenuUIController : MonoBehaviour
         levelPanel.SetActive(false);
         waitingPanel.SetActive(true);
     }
-    private void LoadCarData()
+    private void UpdateGarageTuningUI(CarData carData)
     {
-        if (PlayerPrefs.HasKey("EngineUpgrade"))
+        string carKey = "Tuning_" + carData.CarName;
+        if(PlayerPrefs.GetInt(carKey + "_Engine") == 1)
         {
-            if (PlayerPrefs.GetInt("EngineUpgrade") == 1)
-            {
-                engineRemoveButton.SetActive(true);
-                engineUpgradeButton.SetActive(false);
-            }
-            else
-            {
-                engineRemoveButton.SetActive(false);
-                engineUpgradeButton.SetActive(true);
-            }
+            engineRemoveButton.SetActive(true);
+            engineUpgradeButton.SetActive(false);
         }
-        if (PlayerPrefs.HasKey("BackWingsUpgrade"))
+        else
         {
-            if (PlayerPrefs.GetInt("BackWingsUpgrade") == 1)
-            {
-                wingsRemoveButton.SetActive(true);
-                wingsUpgradeButton.SetActive(false);
-            }
-            else
-            {
-                wingsRemoveButton.SetActive(false);
-                wingsUpgradeButton.SetActive(true);
-            }
+            engineRemoveButton.SetActive(false);
+            engineUpgradeButton.SetActive(true);
         }
-        if (PlayerPrefs.HasKey("SidesUpgrade"))
+        if(PlayerPrefs.GetInt(carKey + "_Sides") == 1)
         {
-            if (PlayerPrefs.GetInt("SidesUpgrade") == 1)
-            {
-                sidesRemoveButton.SetActive(true);
-                sidesUpgradeButton.SetActive(false);
-            }
-            else
-            {
-                sidesRemoveButton.SetActive(false);
-                sidesUpgradeButton.SetActive(true);
-            }
+            sidesRemoveButton.SetActive(true);
+            sidesUpgradeButton.SetActive(false);
+        }
+        else
+        {
+            sidesRemoveButton.SetActive(false);
+            sidesUpgradeButton.SetActive(true);
+        }
+        if(PlayerPrefs.GetInt(carKey + "_BackWings") == 1)
+        {
+            wingsRemoveButton.SetActive(true);
+            wingsUpgradeButton.SetActive(false);
+        }
+        else
+        {
+            wingsRemoveButton.SetActive(false);
+            wingsUpgradeButton.SetActive(true);
         }
     }
 }

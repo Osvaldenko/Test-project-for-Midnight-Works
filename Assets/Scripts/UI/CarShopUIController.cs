@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CarShopUIController : MonoBehaviour
 {
-    [SerializeField] private List<CarPriceData> availableCars; // Машины из ScriptableObject
-    [SerializeField] private Transform carListParent; // Контейнер для UI-кнопок
-    [SerializeField] private GameObject carButtonPrefab; // Префаб кнопки для покупки
+    [SerializeField] private List<CarPriceData> availableCars;
+    [SerializeField] private Transform carListParent;
+    [SerializeField] private GameObject carButtonPrefab;
     [SerializeField] private PlayerData playerData;
 
     //private int playerCoins;

@@ -22,7 +22,7 @@ public class CarComponentsController : MonoBehaviour
     {
         sidesObject.SetActive(value);
     }
-    public void Endine(bool value)
+    public void Engine(bool value)
     {
         enginePartObject.SetActive(value);
     }
