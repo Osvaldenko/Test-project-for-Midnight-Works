@@ -11,7 +11,6 @@ public class GarageController : MonoBehaviour
     [SerializeField] private List<GameObject> carPrefs;
     [SerializeField] private List<CarInfo> carInfos;
 
-    //[SerializeField] private List<Material> colorMaterials;
     private CarComponentsController carComponentsController;
 
     private void Awake()
@@ -76,7 +75,47 @@ public class GarageController : MonoBehaviour
     ///
     public void SelectNextCar()
     {
-
+        int selectedCarID = 0;
+        switch (PlayerPrefs.GetString("SelectedCarName"))
+        {
+            case "Regular":
+                selectedCarID = 0;
+                break;
+            case "PickUpTruck":
+                selectedCarID = 1;
+                break;
+            case "Hammer":
+                selectedCarID = 2;
+                break;
+            case "Taxi":
+                selectedCarID = 3;
+                break;
+        }
+        if (selectedCarID == 3) selectedCarID = 0;
+        else selectedCarID++;
+        int tick = 0;
+        do
+        {
+            if (PlayerPrefs.GetInt("Car_" + carInfos[selectedCarID].carPriceData.CarName) == (int)CarStatus.Sold)
+            {
+                if (carInfos[selectedCarID].carPriceData.CarName != PlayerPrefs.GetString("SelectedCarName"))
+                {
+                    PlayerPrefs.SetString("SelectedCarName", carInfos[selectedCarID].carPriceData.CarName);
+                    RemoveCarObject();
+                    LoadCarData();
+                    Debug.Log("break!");
+                    break;
+                }
+            }
+            else
+            {
+                selectedCarID++;
+                if (selectedCarID == 4) selectedCarID = 0;
+            }
+            tick++;
+            Debug.Log("tick!_" + tick);
+        } while (tick < carInfos.Count);
+        Debug.Log("no car to choose next");
     }
 
     private void SetCarColor(int colorID)
@@ -123,12 +162,15 @@ public class GarageController : MonoBehaviour
                             prefID = 3;
                             break;
                     }
-                    carComponentsController = Instantiate(carPrefs[prefID], carSpawnTransform.position, Quaternion.identity, carSpawnTransform).GetComponent<CarComponentsController>();
+                    GameObject car = Instantiate(carPrefs[prefID], carSpawnTransform.position, Quaternion.Euler(0, 180, 0), carSpawnTransform);
+                    carComponentsController = car.GetComponent<CarComponentsController>();
+                    car.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
         }
         else
         {
+            PlayerPrefs.SetInt("Car_" + carInfos[0].carPriceData.CarName, (int)CarStatus.Sold);
             PlayerPrefs.SetString("SelectedCarName", carInfos[0].carPriceData.CarName);
             playerCarData.SetCarName(carInfos[0].carPriceData.CarName);
             playerCarData.SetCarMaterial(carInfos[0].colorMaterials[0]);
@@ -141,9 +183,18 @@ public class GarageController : MonoBehaviour
             PlayerPrefs.SetInt(carKey + "_Sides", playerCarData.IsSidesUpgraded ? 1 : 0);
             PlayerPrefs.SetInt(carKey + "_BackWings", playerCarData.IsBackWingsUpgraded ? 1 : 0);
             PlayerPrefs.SetInt(carKey + "_MaterialID", 0);
-            carComponentsController = Instantiate(carPrefs[0], carSpawnTransform.position, Quaternion.identity, carSpawnTransform).GetComponent<CarComponentsController>();
+            GameObject car = Instantiate(carPrefs[0], carSpawnTransform.position, Quaternion.Euler(0, 180, 0), carSpawnTransform);
+            carComponentsController = car.GetComponent<CarComponentsController>();
+            car.GetComponent<Rigidbody>().useGravity = false;
         }
         OnCarDataLoaded?.Invoke(playerCarData);
+    }
+    private void RemoveCarObject()
+    {
+        foreach (Transform car in carSpawnTransform)
+        {
+            Destroy(car.gameObject);
+        }
     }
 
     [Serializable]

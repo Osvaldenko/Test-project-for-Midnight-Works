@@ -46,6 +46,7 @@ public class PlayerScoreGenerator : MonoBehaviour
         yield return new WaitForSeconds(1);
         levelUIController.SetActiveDriftingScoreObject(false);
         playerScore += driftingScore;
+        PlayerPrefs.SetInt("DriftPoints", driftingScore);
         driftingScore = 0;
         levelUIController.UpdatePlayerScoreText(playerScore);
     }

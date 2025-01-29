@@ -38,12 +38,12 @@ public class CarShopUIController : MonoBehaviour
             GameObject carButton = Instantiate(carButtonPrefab, carListParent);
             TMP_Text buttonText = carButton.GetComponentInChildren<TMP_Text>();
 
-            if (PlayerPrefs.GetInt("Car_" + car.CarName, 0) == 2)
+            if (PlayerPrefs.GetInt("Car_" + car.CarName, (int)CarStatus.OnSale) == (int)CarStatus.Sold)
             {
                 buttonText.text = car.CarName + " (Sold)";
                 carButton.GetComponent<Button>().interactable = false;
             }
-            else if(PlayerPrefs.GetInt("Car_" + car.CarName, 0) == 1)
+            else if (PlayerPrefs.GetInt("Car_" + car.CarName, (int)CarStatus.OnSale) == (int)CarStatus.Unlocked)
             {
                 buttonText.text = car.CarName + " - " + car.Price + " Coins";
                 carButton.GetComponent<Button>().onClick.AddListener(() => BuyCar(car));
@@ -77,19 +77,28 @@ public class CarShopUIController : MonoBehaviour
 
     public void BuyCar(CarPriceData car)
     {
+        Debug.Log("trying to buy car_" + car.CarName);
         if (playerData.PlayerCoins >= car.Price)
         {
+            Debug.Log(car.CarName + "_bought");
             playerData.RemoveCoins(car.Price);
-            PlayerPrefs.SetInt("Car_" + car.CarName, 2);
+            PlayerPrefs.SetInt("Car_" + car.CarName, (int)CarStatus.Sold);
             //SavePlayerData();
             RefreshShop();
         }
     }
     public void UnlockCar(CarPriceData car)
     {
-        PlayerPrefs.SetInt("Car_" + car.CarName, 1);
+        Debug.Log(car.CarName + "_unlocked");
+        PlayerPrefs.SetInt("Car_" + car.CarName, (int)CarStatus.Unlocked);
         playerDriftPoints -= car.RequiredDriftPoints;
         SavePlayerData();
         RefreshShop();
     }
+}
+public enum CarStatus
+{
+    OnSale = 0,
+    Unlocked = 1,
+    Sold = 2
 }

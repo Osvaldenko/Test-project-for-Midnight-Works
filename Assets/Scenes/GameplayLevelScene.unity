@@ -4204,7 +4204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carData: {fileID: 11400000, guid: fd99249200f743a47934e0925c46e8df, type: 2}
-  playerPrefab: {fileID: 2721055025602234454, guid: 397cad560bd02c44cab519a72d7d460a, type: 3}
+  playerPrefab:
+  - {fileID: 2721055025602234454, guid: 397cad560bd02c44cab519a72d7d460a, type: 3}
+  - {fileID: 4535854839176440117, guid: 891f84f4359763c4db95a51318c656d5, type: 3}
+  - {fileID: 5693030945363236411, guid: 60737933b1d71614399150f8a132de5c, type: 3}
+  - {fileID: 7142018491332479621, guid: e659459cde3d052429db6e716ef3821d, type: 3}
   cameraPrefab: {fileID: 2646915078514399324, guid: 657c2debf4b4458448136a777f7c6c8b, type: 3}
 --- !u!114 &176442431
 MonoBehaviour:
