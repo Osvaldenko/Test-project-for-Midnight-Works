@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GarageController : MonoBehaviour
 {
@@ -10,62 +11,104 @@ public class GarageController : MonoBehaviour
     [SerializeField] private Transform carSpawnTransform;
     [SerializeField] private List<GameObject> carPrefs;
     [SerializeField] private List<CarInfo> carInfos;
+    [Header("Garage UI")]
+    [SerializeField] private Button selectNextCarBttn;
+
+    [SerializeField] private Button setFirstColorBttn;
+    [SerializeField] private Button setSecondColorBttn;
+    [SerializeField] private Button setThirdColorBttn;
+
+    [SerializeField] private Button upgradeEngineBttn;
+    [SerializeField] private Button removeEngineBttn;
+    [SerializeField] private Button upgradeSidesBttn;
+    [SerializeField] private Button removeSidesBttn;
+    [SerializeField] private Button upgradeBackWingsBttn;
+    [SerializeField] private Button removeBackWingsBttn;
 
     private CarComponentsController carComponentsController;
 
+    private void OnEnable()
+    {
+        Cheats.OnTaxiSold += SelectNextCar;
+        Cheats.OnHammerSold += SelectNextCar;
+        Cheats.OnPickUpSold += SelectNextCar;
+        Cheats.OnAllDataDeleted += SelectNextCar;
+    }
+    private void OnDisable()
+    {
+        Cheats.OnTaxiSold -= SelectNextCar;
+        Cheats.OnHammerSold -= SelectNextCar;
+        Cheats.OnPickUpSold -= SelectNextCar;
+        Cheats.OnAllDataDeleted -= SelectNextCar;
+    }
     private void Awake()
     {
         LoadCarData();
     }
-    public void SetFirstColor()
+    private void Start()
+    {
+        selectNextCarBttn.onClick.AddListener(() => SelectNextCar());
+
+        setFirstColorBttn.onClick.AddListener(() => SetFirstColor());
+        setSecondColorBttn.onClick.AddListener(() => SetSecondColor());
+        setThirdColorBttn.onClick.AddListener(() => SetThirdColor());
+
+        upgradeEngineBttn.onClick.AddListener(() => UpgradeEndine());
+        removeEngineBttn.onClick.AddListener(() => RemoveEndineUpgrade());
+        upgradeSidesBttn.onClick.AddListener(() => UpgradeSides());
+        removeSidesBttn.onClick.AddListener(() => RemoveSidesUpgrade());
+        upgradeBackWingsBttn.onClick.AddListener(() => UpgradeBackWings());
+        removeBackWingsBttn.onClick.AddListener(() => RemoveBackWingsUpgrade());
+    }
+    private void SetFirstColor()
     {
         SetCarColor(0);
     }
-    public void SetSecondColor()
+    private void SetSecondColor()
     {
         SetCarColor(1);
     }
-    public void SetThirdColor()
+    private void SetThirdColor()
     {
         SetCarColor(2);
     }
     ///
-    public void UpgradeEndine()
+    private void UpgradeEndine()
     {
         string carKey = "Tuning_" + playerCarData.CarName;
         playerCarData.SetEngineUpgrade(true);
         carComponentsController.Engine(true);
         PlayerPrefs.SetInt(carKey + "_Engine", playerCarData.IsEngineUpgraded ? 1 : 0);
     }
-    public void UpgradeBackWings()
+    private void UpgradeBackWings()
     {
         string carKey = "Tuning_" + playerCarData.CarName;
         playerCarData.SetBackWingsUpgrade(true);
         carComponentsController.BackWings(true);
         PlayerPrefs.SetInt(carKey + "_BackWings", playerCarData.IsBackWingsUpgraded ? 1 : 0);
     }
-    public void UpgradeSides()
+    private void UpgradeSides()
     {
         string carKey = "Tuning_" + playerCarData.CarName;
         playerCarData.SetSidesUpgrade(true);
         carComponentsController.Sides(true);
         PlayerPrefs.SetInt(carKey + "_Sides", playerCarData.IsSidesUpgraded ? 1 : 0);
     }
-    public void RemoveEndineUpgrade()
+    private void RemoveEndineUpgrade()
     {
         string carKey = "Tuning_" + playerCarData.CarName;
         playerCarData.SetEngineUpgrade(false);
         carComponentsController.Engine(false);
         PlayerPrefs.SetInt(carKey + "_Engine", playerCarData.IsEngineUpgraded ? 1 : 0);
     }
-    public void RemoveBackWingsUpgrade()
+    private void RemoveBackWingsUpgrade()
     {
         string carKey = "Tuning_" + playerCarData.CarName;
         playerCarData.SetBackWingsUpgrade(false);
         carComponentsController.BackWings(false);
         PlayerPrefs.SetInt(carKey + "_BackWings", playerCarData.IsBackWingsUpgraded ? 1 : 0);
     }
-    public void RemoveSidesUpgrade()
+    private void RemoveSidesUpgrade()
     {
         string carKey = "Tuning_" + playerCarData.CarName;
         playerCarData.SetSidesUpgrade(false);
@@ -73,7 +116,7 @@ public class GarageController : MonoBehaviour
         PlayerPrefs.SetInt(carKey + "_Sides", playerCarData.IsSidesUpgraded ? 1 : 0);
     }
     ///
-    public void SelectNextCar()
+    private void SelectNextCar()
     {
         int selectedCarID = 0;
         switch (PlayerPrefs.GetString("SelectedCarName"))

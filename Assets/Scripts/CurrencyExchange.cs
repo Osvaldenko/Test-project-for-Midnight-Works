@@ -1,12 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CurrencyExchange : MonoBehaviour
 {
+    [SerializeField] private Button buyBttn;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private int coinsCount;
     [SerializeField] private int moneyCount;
 
-    public void BuyCoins()
+    private void Start()
+    {
+        buyBttn.onClick.AddListener(() => BuyCoins());
+    }
+    private void BuyCoins()
     {
         if (TakeMoney())
             playerData.AddCoins(coinsCount);

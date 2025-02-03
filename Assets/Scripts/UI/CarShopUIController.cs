@@ -13,6 +13,22 @@ public class CarShopUIController : MonoBehaviour
     //private int playerCoins;
     private int playerDriftPoints;
 
+    private void OnEnable()
+    {
+        Cheats.On10kDriftPointsAdded += RefreshShop;
+        Cheats.OnTaxiSold += RefreshShop;
+        Cheats.OnHammerSold += RefreshShop;
+        Cheats.OnPickUpSold += RefreshShop;
+        Cheats.OnAllDataDeleted += RefreshAllShopData;
+    }
+    private void OnDisable()
+    {
+        Cheats.On10kDriftPointsAdded -= RefreshShop;
+        Cheats.OnTaxiSold -= RefreshShop;
+        Cheats.OnHammerSold -= RefreshShop;
+        Cheats.OnPickUpSold -= RefreshShop;
+        Cheats.OnAllDataDeleted -= RefreshAllShopData;
+    }
     private void Awake()
     {
         LoadPlayerData();
@@ -21,14 +37,17 @@ public class CarShopUIController : MonoBehaviour
     {
         GenerateCarShopUI();
     }
+    private void RefreshAllShopData()
+    {
+        LoadPlayerData();
+        RefreshShop();
+    }
     private void LoadPlayerData()
     {
-        //playerCoins = PlayerPrefs.GetInt("Coins", 0);
         playerDriftPoints = PlayerPrefs.GetInt("DriftPoints", 0);
     }
     private void SavePlayerData()
     {
-        //PlayerPrefs.SetInt("Coins", playerCoins);
         PlayerPrefs.SetInt("DriftPoints", playerDriftPoints);
     }
     private void GenerateCarShopUI()
@@ -75,7 +94,7 @@ public class CarShopUIController : MonoBehaviour
         GenerateCarShopUI();
     }
 
-    public void BuyCar(CarPriceData car)
+    private void BuyCar(CarPriceData car)
     {
         Debug.Log("trying to buy car_" + car.CarName);
         if (playerData.PlayerCoins >= car.Price)
@@ -87,7 +106,7 @@ public class CarShopUIController : MonoBehaviour
             RefreshShop();
         }
     }
-    public void UnlockCar(CarPriceData car)
+    private void UnlockCar(CarPriceData car)
     {
         Debug.Log(car.CarName + "_unlocked");
         PlayerPrefs.SetInt("Car_" + car.CarName, (int)CarStatus.Unlocked);

@@ -698,7 +698,7 @@ MonoBehaviour:
   brakeTorque: 3000
   driftSpeedThreshold: 10
   driftTimeWindow: 0.3
-  driftFactor: 2
+  driftFactor: 6
   trailPrefab: {fileID: 3770445615076020329, guid: b8010a07254d5d24593645a60c0ce6f0, type: 3}
 --- !u!114 &7814469386126862244
 MonoBehaviour:

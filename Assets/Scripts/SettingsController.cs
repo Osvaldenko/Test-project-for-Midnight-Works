@@ -9,6 +9,14 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     public SettingsData settingsData;
 
+    private void OnEnable()
+    {
+        Cheats.OnAllDataDeleted += LoadSettings;
+    }
+    private void OnDisable()
+    {
+        Cheats.OnAllDataDeleted -= LoadSettings;
+    }
     private void Start()
     {
         LoadSettings();
@@ -37,9 +45,21 @@ public class SettingsController : MonoBehaviour
             settingsData.musicVolume = volume;
             audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         }
+        else
+        {
+            float volume = 1;
+            settingsData.musicVolume = volume;
+            audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        }
         if (PlayerPrefs.HasKey("GraphicsQuality"))
         {
             int quality = PlayerPrefs.GetInt("GraphicsQuality");
+            settingsData.graphicsQuality = (GraphicsQuality)quality;
+            QualitySettings.SetQualityLevel(quality);
+        }
+        else
+        {
+            int quality = (int)GraphicsQuality.HighQuality;
             settingsData.graphicsQuality = (GraphicsQuality)quality;
             QualitySettings.SetQualityLevel(quality);
         }

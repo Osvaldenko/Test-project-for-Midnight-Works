@@ -65,6 +65,17 @@
       "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/UnityAds/${VERSION}/ISUnityAdsAdapterDependencies.xml",
       "dependencyXmlFileName": "ISUnityAdsAdapterDependencies.xml",
       "versions": {
+        "4.3.53.0": {
+          "ironSourceSdkVersion": "[8.4.0, 9.0[",
+          "android": {
+            "adapterVersion": "4.3.48",
+            "adNetworkVersion": "4.13.1"
+          },
+          "ios": {
+            "adapterVersion": "4.3.47.0",
+            "adNetworkVersion": "4.13.1"
+          }
+        },
         "4.3.52.0": {
           "ironSourceSdkVersion": "[8.4.0, 9.0[",
           "android": {
@@ -127,6 +138,17 @@
       "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/AppLovin/${VERSION}/ISAppLovinAdapterDependencies.xml",
       "dependencyXmlFileName": "ISAppLovinAdapterDependencies.xml",
       "versions": {
+        "4.3.56.0": {
+          "ironSourceSdkVersion": "[8.4.0, 9.0[",
+          "android": {
+            "adapterVersion": "4.3.50",
+            "adNetworkVersion": "13.1.0"
+          },
+          "ios": {
+            "adapterVersion": "4.3.52.0",
+            "adNetworkVersion": "13.1.0"
+          }
+        },
         "4.3.55.0": {
           "ironSourceSdkVersion": "[8.4.0, 9.0[",
           "android": {
@@ -452,6 +474,17 @@
       "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/Fyber/${VERSION}/ISFyberAdapterDependencies.xml",
       "dependencyXmlFileName": "ISFyberAdapterDependencies.xml",
       "versions": {
+        "4.3.54.0": {
+          "ironSourceSdkVersion": "[8.4.0, 9.0[",
+          "android": {
+            "adapterVersion": "4.3.36",
+            "adNetworkVersion": "8.3.5"
+          },
+          "ios": {
+            "adapterVersion": "4.3.41.0",
+            "adNetworkVersion": "8.3.5"
+          }
+        },
         "4.3.53.0": {
           "ironSourceSdkVersion": "[8.4.0, 9.0[",
           "android": {
@@ -831,6 +864,17 @@
       "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/Mintegral/${VERSION}/ISMintegralAdapterDependencies.xml",
       "dependencyXmlFileName": "ISMintegralAdapterDependencies.xml",
       "versions": {
+        "4.3.37.0": {
+          "ironSourceSdkVersion": "[8.4.0, 9.0[",
+          "android": {
+            "adapterVersion": "4.3.35",
+            "adNetworkVersion": "16.9.31"
+          },
+          "ios": {
+            "adapterVersion": "4.3.31.0",
+            "adNetworkVersion": "7.7.5"
+          }
+        },
         "4.3.36.0": {
           "ironSourceSdkVersion": "[8.4.0, 9.0[",
           "android": {
@@ -1063,6 +1107,17 @@
       "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/MyTarget/${VERSION}/ISMyTargetAdapterDependencies.xml",
       "dependencyXmlFileName": "ISMyTargetAdapterDependencies.xml",
       "versions": {
+        "4.1.28.0": {
+          "ironSourceSdkVersion": "[8.4.0, 9.0[",
+          "android": {
+            "adapterVersion": "4.1.20",
+            "adNetworkVersion": "5.22.1"
+          },
+          "ios": {
+            "adapterVersion": "4.1.26.0",
+            "adNetworkVersion": "5.24.1"
+          }
+        },
         "4.1.27.0": {
           "ironSourceSdkVersion": "[8.4.0, 9.0[",
           "android": {
@@ -1415,6 +1470,17 @@
       "dependencyXmlFileName": "ISYandexAdapterDependencies.xml",
       "isNew": true,
       "versions": {
+        "4.3.10.0": {
+          "ironSourceSdkVersion": "[8.4.0, 9.0[",
+          "android": {
+            "adapterVersion": "4.3.8",
+            "adNetworkVersion": "7.8.1"
+          },
+          "ios": {
+            "adapterVersion": "4.3.9.0",
+            "adNetworkVersion": "7.9.0"
+          }
+        },
         "4.3.9.0": {
           "ironSourceSdkVersion": "[8.4.0, 9.0[",
           "android": {

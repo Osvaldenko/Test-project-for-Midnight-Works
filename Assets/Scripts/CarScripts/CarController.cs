@@ -27,6 +27,7 @@ public class CarController : MonoBehaviour
     private bool isDrifting = false;
     private float lastSpacePressTime = 0;
     private WheelFrictionCurve originalSideWaysFriction;
+    //private WheelFrictionCurve frontwheelsDriftSideWaysFriction;
     private WheelFrictionCurve driftSideWaysFriction;
     private bool isBraking;
     private PhotonView playerView;
@@ -50,6 +51,7 @@ public class CarController : MonoBehaviour
         originalSideWaysFriction = backLeftCollider.sidewaysFriction;
         driftSideWaysFriction = backLeftCollider.sidewaysFriction;
         driftSideWaysFriction.stiffness = originalSideWaysFriction.stiffness / driftFactor;
+        //frontwheelsDriftSideWaysFriction.stiffness = originalSideWaysFriction.stiffness / (driftFactor / 4);
         playerView = GetComponent<PhotonView>();
     }
     private void Update()
@@ -60,7 +62,7 @@ public class CarController : MonoBehaviour
             float steeringPower = maxWheelSteeringAngle * Input.GetAxis("Horizontal");
 
             float carSpeed = carRigidbody.velocity.magnitude * 3.6f;//перевел метры в секунду в километры в час
-                                                                    
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 isBraking = true;
@@ -86,6 +88,8 @@ public class CarController : MonoBehaviour
 
             frontLeftCollider.steerAngle = steeringPower;
             frontRightCollider.steerAngle = steeringPower;
+            frontLeftCollider.motorTorque = enginePower/2;
+            frontRightCollider.motorTorque = enginePower/2;
             backLeftCollider.motorTorque = enginePower;
             backRightCollider.motorTorque = enginePower;
 
@@ -105,7 +109,7 @@ public class CarController : MonoBehaviour
             {
                 trail.emitting = isDrifting;
             }
-            if (isDrifting)
+            if (isDrifting && carSpeed > 3)
             {
                 carSoundController.PlayDriftSound();
             }
@@ -138,6 +142,8 @@ public class CarController : MonoBehaviour
     private void StopDrift()
     {
         isDrifting = false;
+        //frontLeftCollider.sidewaysFriction = originalSideWaysFriction;
+        //frontRightCollider.sidewaysFriction = originalSideWaysFriction;
         backLeftCollider.sidewaysFriction = originalSideWaysFriction;
         backRightCollider.sidewaysFriction = originalSideWaysFriction;
         OnCarStopedDrifting?.Invoke();
@@ -146,6 +152,8 @@ public class CarController : MonoBehaviour
     private void StartDrift()
     {
         isDrifting = true;
+        //frontLeftCollider.sidewaysFriction = frontwheelsDriftSideWaysFriction;
+        //frontRightCollider.sidewaysFriction = frontwheelsDriftSideWaysFriction;
         backLeftCollider.sidewaysFriction = driftSideWaysFriction;
         backRightCollider.sidewaysFriction = driftSideWaysFriction;
         Debug.Log("Дрифт активирован!");

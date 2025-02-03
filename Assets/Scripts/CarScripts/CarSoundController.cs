@@ -20,17 +20,19 @@ public class CarSoundController : MonoBehaviour
     {
         float speed = _rigidbody.velocity.magnitude;
         AdjustDriveSoundPitch(speed);
-
+        //Debug.Log(speed);
         if (speed > 1f && driveSound.isPlaying == false)
         {
             idleSound.Stop();
             driveSound.loop = true;
             driveSound.Play();
+            Debug.Log("move sound");
         }
         else if (speed <= 1f && idleSound.isPlaying == false && engineStarted)
         {
             driveSound.Stop();
             idleSound.Play();
+            Debug.Log("stop sound");
         }
     }
 

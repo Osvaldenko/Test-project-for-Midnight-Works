@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IronSourcePCController : MonoBehaviour //эмулирую рекламу на ПК версии
 {
@@ -9,10 +10,15 @@ public class IronSourcePCController : MonoBehaviour //эмулирую рекламу на ПК вер
 
     [SerializeField] private bool isTesting = true;
     [SerializeField] private float adDuration = 5f;
+    [SerializeField] private Button adButton;
 
     private bool adIsPlaying = false;
 
-    public void ShowRewardedAd()
+    private void Start()
+    {
+        adButton.onClick.AddListener(() => ShowRewardedAd());
+    }
+    private void ShowRewardedAd()
     {
 #if UNITY_STANDALONE
         if (isTesting)

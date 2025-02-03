@@ -12,11 +12,13 @@ public class LevelUIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI driftingScoreText;
     [SerializeField] private GameObject driftingScoreGameObject;
     [Header("EndGameUI")]
+    [SerializeField] private TextMeshProUGUI premiumText;
     [SerializeField] private TextMeshProUGUI playerCoinsText;
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject aDPanel;
     [SerializeField] private TextMeshProUGUI aDText;
     [SerializeField] private Button aDButton;
+    [SerializeField] private Button exitButton;
 
     private int playerCoins;
 
@@ -33,6 +35,14 @@ public class LevelUIController : MonoBehaviour
         IronSourcePCController.OnAdCompletedEvent -= OnAdCompletedEvent;
     }
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("Premium") == 1)
+        {
+            premiumText.gameObject.SetActive(true);
+        }
+        exitButton.onClick.AddListener(() => ExitToMenu());
+    }
     private void OnAdCompletedEvent()
     {
         playerCoins *= 2;
@@ -47,9 +57,18 @@ public class LevelUIController : MonoBehaviour
     }
     private void GameOver()
     {
-        PlayerPrefs.SetInt("DriftPoints", scoreGenerator.PlayerScore);
+        //PlayerPrefs.SetInt("DriftPoints", scoreGenerator.PlayerScore);
         playerCoins = scoreGenerator.PlayerScore / 3;
+        if (PlayerPrefs.GetInt("Premium") == 1)
+        {
+            playerCoins *= 2;
+        }
         StartCoroutine(EndGame());
+    }
+    private void ExitToMenu()
+    {
+        scoreGenerator.AddCoinsToPlayer(playerCoins);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void SetPlayerScoreText(int value)
@@ -71,11 +90,6 @@ public class LevelUIController : MonoBehaviour
     public void UpdatePlayerScoreText(int value)
     {
         playerScoreText.text = value.ToString();
-    }
-    public void ExitToMenu()
-    {
-        scoreGenerator.AddCoinsToPlayer(playerCoins);
-        SceneManager.LoadScene("MainMenuScene");
     }
     IEnumerator EndGame()
     {
